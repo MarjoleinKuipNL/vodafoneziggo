@@ -7,16 +7,19 @@
         </div>
     </div>
     <div class="pull-right">
-        <a class="btn btn-success" href="{{ route('peoples.create') }}">
+        <a class="btn btn-success" href="{{ route('people.create') }}">
             Create new people
         </a>
     </div>
     <table class="table table-bordered">
         <tr>
-
+            <td>Id</td>
+            <td>Name</td>
+            <td>BirthYear</td>
         </tr>
+        @foreach($peoples as $people)
         <tr>
-            @foreach($peoples as $people)
+
             <td>
                 {{ $people->id  }}
             </td>
@@ -44,4 +47,6 @@
                 </form>
             </td>
         </tr>
+        @endforeach
     </table>
+@endsection
