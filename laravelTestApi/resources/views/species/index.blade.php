@@ -24,7 +24,7 @@
                 {{ $species->name }}
             </td>
             <td>
-                {{ $species->birth_year  }}
+                {{ $species->classification  }}
             </td>
             <td>
                 <a class="btn btn-info" href="{{ route('species.show', $species->id)}}">
@@ -44,4 +44,7 @@
                 </form>
             </td>
         </tr>
+        @endforeach
     </table>
+
+@endsection

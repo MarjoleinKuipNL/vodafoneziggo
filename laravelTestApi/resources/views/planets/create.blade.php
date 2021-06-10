@@ -3,11 +3,11 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                Voeg nieuwe mensen toe:
+                Voeg nieuwe planeten toe:
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('')}}">
-                    terug naar index van mensen
+                <a class="btn btn-primary" href="{{ route('planets')}}">
+                    terug naar index van planeten
                 </a>
 
             </div>
@@ -26,44 +26,69 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
+                    <strong>Name</strong>
                     <input type="text" name="name" class="form-control" placeholder="name">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <input type="text" name="hair_color" class="form-control" placeholder="hair_color">
-                </div>
-            </div>  <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <input type="text" name="homeworld" class="form-control" placeholder="homeworld">
-                </div>
-            </div>  <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <input type="text" name="mass" class="form-control" placeholder="mass">
-                </div>
-            </div>  <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <input type="text" name="gender" class="form-control" placeholder="gender">
-                </div>
-            </div>  <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <input type="text" name="birth_year" class="form-control" placeholder="birth_year">
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <input type="text" name="eye_color" class="form-control" placeholder="eye_color">
-                </div>
-            </div>  <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <input type="text" name="skin_color" class="form-control" placeholder="skin_color">
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
+                    <strong>Url</strong>
                     <input type="text" name="url" class="form-control" placeholder="url">
                 </div>
+            </div>  <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Climate</strong>
+                    <input type="text" name="climate" class="form-control" placeholder="climate">
+                </div>
+            </div>  <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Diameter</strong>
+                    <input type="text" name="diameter" class="form-control" placeholder="diameter">
+                </div>
             </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Gravity</strong>
+                    <input type="text" name="gravity" class="form-control" placeholder="gravity">
+                </div>
+            </div>  <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Orbital Period</strong>
+
+                    <input type="text" name="orbital_period" class="form-control" placeholder="orbital_period">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Population</strong>
+
+                    <input type="text" name="population" class="form-control" placeholder="population">
+                </div>
+            </div>  <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Rotation Periods</strong>
+
+                    <input type="text" name="rotation_period" class="form-control" placeholder="rotation_period">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Surface water</strong>
+
+                    <input type="text" name="surface_water" class="form-control" placeholder="surface_water">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Terrain</strong>
+
+                    <input type="text" name="terrain" class="form-control" placeholder="terrain">
+                </div>
+            </div>
+            <div class="text-center col-xs-12 col-sm-12 col-md-12">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
     </form>
 
 @endsection

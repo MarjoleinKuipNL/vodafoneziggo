@@ -24,7 +24,7 @@
                 {{ $planet->name }}
             </td>
             <td>
-                {{ $planet->birth_year  }}
+                {{ $planet->climate  }}
             </td>
             <td>
                 <a class="btn btn-info" href="{{ route('planet.show', $planet->id)}}">
@@ -44,4 +44,7 @@
                 </form>
             </td>
         </tr>
+        @endforeach
     </table>
+
+@endsection

@@ -15,9 +15,9 @@ class SpeciesController extends Controller
      */
     public function index()
     {
-        $Speciess = Species::all();
+        $species = Species::all();
 
-        return view('Speciess.index', compact('Speciess'));
+        return view('species.index', compact('species'));
     }
 
     /**
@@ -27,7 +27,7 @@ class SpeciesController extends Controller
      */
     public function create()
     {
-       return view('Speciess.create');
+       return view('species.create');
     }
 
     /**
@@ -45,7 +45,7 @@ class SpeciesController extends Controller
 
         Species::create($request->all());
 
-        return redirect()->route('Speciess.index')->with('success','Species created successfully.');
+        return redirect()->route('species.index')->with('success','Species created successfully.');
     }
 
     /**
@@ -56,7 +56,7 @@ class SpeciesController extends Controller
      */
     public function show(Species $Species)
     {
-      return view('Speciess.show',compact('Species'));
+      return view('species.show',compact('Species'));
     }
 
     /**
@@ -67,7 +67,7 @@ class SpeciesController extends Controller
      */
     public function edit(Species $Species)
     {
-        return view('Speciess.edit',compact('Species'));
+        return view('species.edit',compact('Species'));
     }
 
     /**
@@ -86,7 +86,7 @@ class SpeciesController extends Controller
 
         $Species->update($request->all());
 
-        return redirect()->route('Speciess.index')->with('success','Species updated successfully');
+        return redirect()->route('species.index')->with('success','Species updated successfully');
     }
 
     /**
@@ -99,7 +99,7 @@ class SpeciesController extends Controller
     {
       $Species->delete();
 
-       return redirect()->route('Speciess.index')
+       return redirect()->route('species.index')
                        ->with('success','Species deleted successfully');
     }
 }

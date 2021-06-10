@@ -17,7 +17,7 @@ class PlanetsController extends Controller
     {
         $Planetss = Planets::all();
 
-        return view('Planetss.index', compact('Planetss'));
+        return view('Planets.index', compact('Planetss'));
     }
 
     /**
@@ -27,7 +27,7 @@ class PlanetsController extends Controller
      */
     public function create()
     {
-       return view('Planetss.create');
+       return view('Planets.create');
     }
 
     /**
@@ -45,7 +45,7 @@ class PlanetsController extends Controller
 
         Planets::create($request->all());
 
-        return redirect()->route('Planetss.index')->with('success','Planets created successfully.');
+        return redirect()->route('Planets.index')->with('success','Planets created successfully.');
     }
 
     /**
@@ -67,7 +67,7 @@ class PlanetsController extends Controller
      */
     public function edit(Planets $Planets)
     {
-        return view('Planetss.edit',compact('Planets'));
+        return view('Planets.edit',compact('Planets'));
     }
 
     /**
@@ -86,7 +86,7 @@ class PlanetsController extends Controller
 
         $Planets->update($request->all());
 
-        return redirect()->route('Planetss.index')->with('success','Planets updated successfully');
+        return redirect()->route('Planets.index')->with('success','Planets updated successfully');
     }
 
     /**
@@ -99,7 +99,7 @@ class PlanetsController extends Controller
     {
       $Planets->delete();
 
-       return redirect()->route('Planetss.index')
+       return redirect()->route('Planets.index')
                        ->with('success','Planets deleted successfully');
     }
 
