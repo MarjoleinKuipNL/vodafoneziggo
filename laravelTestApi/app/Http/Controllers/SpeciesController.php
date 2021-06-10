@@ -48,9 +48,13 @@ class SpeciesController extends Controller
      * @param  \App\Models\Species  $species
      * @return \Illuminate\Http\Response
      */
-    public function show(Species $species)
+    public function show(Request $request)
     {
-        //
+        $id = $request->route('id');
+        $client =  new Client();
+        $result = $client->request('GET', 'https://swapi.dev/api/species/' . $id . '/');
+        $result = $result->getBody();
+        return $result;
     }
 
     /**

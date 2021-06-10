@@ -1,24 +1,22 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Web;
 
-use GuzzleHttp\Client;
-use App\Models\People;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class PeopleController extends Controller
+class PeoplesController extends Controller
 {
-    /**
+        /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $client =  new Client();
-        $result = $client->request('GET', 'https://swapi.dev/api/people');
-        $result = $result->getBody();
-        return $result;
+        $peoples = People::all();
+
+        return view('Peoples.index', compact('Peoples'));
     }
 
     /**
@@ -28,7 +26,7 @@ class PeopleController extends Controller
      */
     public function create()
     {
-        //
+       return view('Peoples.create');
     }
 
     /**
@@ -39,7 +37,14 @@ class PeopleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+        ]);
+
+        People::create($request->all());
+
+        return redirect()->route('Peoples.index')->with('success','People created successfully.');
     }
 
     /**
@@ -48,13 +53,9 @@ class PeopleController extends Controller
      * @param  \App\Models\People  $people
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request)
+    public function show(People $people)
     {
-        $id = $request->route('id');
-        $client =  new Client();
-        $result = $client->request('GET', 'https://swapi.dev/api/people/' . $id . '/');
-        $result = $result->getBody();
-        return $result;
+      return view('Peoples.show',compact('People'));
     }
 
     /**
@@ -65,7 +66,7 @@ class PeopleController extends Controller
      */
     public function edit(People $people)
     {
-        //
+        return view('Peoples.edit',compact('People'));
     }
 
     /**
@@ -77,7 +78,14 @@ class PeopleController extends Controller
      */
     public function update(Request $request, People $people)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+        ]);
+
+        $people->update($request->all());
+
+        return redirect()->route('Peoples.index')->with('success','People updated successfully');
     }
 
     /**
@@ -88,6 +96,10 @@ class PeopleController extends Controller
      */
     public function destroy(People $people)
     {
-        //
+      $people->delete();
+
+       return redirect()->route('Peoples.index')
+                       ->with('success','People deleted successfully');
     }
+
 }

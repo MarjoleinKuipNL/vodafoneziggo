@@ -48,9 +48,13 @@ class PlanetsController extends Controller
      * @param  \App\Models\Planets  $planets
      * @return \Illuminate\Http\Response
      */
-    public function show(Planets $planets)
+    public function show(Request $request)
     {
-        //
+        $id = $request->route('id');
+        $client =  new Client();
+        $result = $client->request('GET', 'https://swapi.dev/api/planets/' . $id . '/');
+        $result = $result->getBody();
+        return $result;
     }
 
     /**
