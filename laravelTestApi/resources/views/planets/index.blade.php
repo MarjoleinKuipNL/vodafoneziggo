@@ -27,17 +27,17 @@
                 {{ $planet->climate  }}
             </td>
             <td>
-                <a class="btn btn-info" href="{{ route('planet.show', $planet->id)}}">
+                <a class="btn btn-info" href="{{ route('planets.show', $planet->id)}}">
                     Show
                 </a>
             </td>
             <td>
-                <a class="btn btn-info" href="{{ route('planet.edit', $planet->id)}}">
+                <a class="btn btn-info" href="{{ route('planets.edit', $planet->id)}}">
                     Edit
                 </a>
             </td>
             <td>
-                <form action="{{ route('planet.destroy', $planet->id) }}" method="POST">
+                <form action="{{ route('planets.destroy', $planet->id) }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button type="submit " class="btn btn-danger">Delete</button>

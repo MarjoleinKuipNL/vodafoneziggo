@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Models\People;
+use GuzzleHttp\Client;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -15,8 +16,12 @@ class PeoplesController extends Controller
      */
     public function index()
     {
-        $peoples = People::all();
-
+        $client =  new Client();
+        $result = $client->request('GET', 'https://swapi.dev/api/people');
+        $peoples = $result->getBody();
+        // return $result;
+        // $peoples = People::all();
+        dd($result);
         return view('people.index', compact('peoples'));
     }
 
@@ -27,7 +32,7 @@ class PeoplesController extends Controller
      */
     public function create()
     {
-       return view('peoples.create');
+       return view('people.create');
     }
 
     /**
@@ -45,7 +50,7 @@ class PeoplesController extends Controller
 
         People::create($request->all());
 
-        return redirect()->route('Peoples.index')->with('success','People created successfully.');
+        return redirect()->route('people.index')->with('success','People created successfully.');
     }
 
     /**
@@ -56,7 +61,7 @@ class PeoplesController extends Controller
      */
     public function show(People $people)
     {
-      return view('Peoples.show',compact('People'));
+      return view('people.show',compact('people'));
     }
 
     /**
@@ -67,7 +72,7 @@ class PeoplesController extends Controller
      */
     public function edit(People $people)
     {
-        return view('Peoples.edit',compact('People'));
+        return view('people.edit',compact('People'));
     }
 
     /**
@@ -86,7 +91,7 @@ class PeoplesController extends Controller
 
         $people->update($request->all());
 
-        return redirect()->route('Peoples.index')->with('success','People updated successfully');
+        return redirect()->route('People.index')->with('success','People updated successfully');
     }
 
     /**
@@ -99,7 +104,7 @@ class PeoplesController extends Controller
     {
       $people->delete();
 
-       return redirect()->route('Peoples.index')
+       return redirect()->route('People.index')
                        ->with('success','People deleted successfully');
     }
 

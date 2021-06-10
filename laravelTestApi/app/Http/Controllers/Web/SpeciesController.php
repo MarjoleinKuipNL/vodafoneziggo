@@ -97,7 +97,7 @@ class SpeciesController extends Controller
      */
     public function destroy(Species $species)
     {
-      $Species->delete();
+      $species->delete();
 
        return redirect()->route('species.index')
                        ->with('success','Species deleted successfully');

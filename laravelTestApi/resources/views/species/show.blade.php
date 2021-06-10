@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layouts.app')
 @section('content')
     <div class="row">
         <div class="col-lg-12 margin-tb">
@@ -82,9 +82,6 @@
                 <strong>Skin colors</strong>
                 {{ $specy->skin_colors }}
             </div>
-        </div>
-        <div class="text-center col-xs-12 col-sm-12 col-md-12">
-            <button type="submit" class="btn btn-primary">Submit</button>
         </div>
     </div>
 @endsection

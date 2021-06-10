@@ -13,7 +13,7 @@
                       <ul class="nav navbar-nav">
                         <li class="active"><a href="#">Home</a></li>
                         <li><a href="/species">species</a></li>
-                        <li><a href="/peoples">Peoples</a></li>
+                        <li><a href="/people">Peoples</a></li>
                         <li><a href="/planets">planets</a></li>
                       </ul>
                     </div>

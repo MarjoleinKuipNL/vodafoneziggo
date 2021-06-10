@@ -15,9 +15,9 @@ class PlanetsController extends Controller
      */
     public function index()
     {
-        $Planetss = Planets::all();
+        $planets = Planets::all();
 
-        return view('Planets.index', compact('Planetss'));
+        return view('planets.index', compact('planets'));
     }
 
     /**
@@ -27,7 +27,7 @@ class PlanetsController extends Controller
      */
     public function create()
     {
-       return view('Planets.create');
+       return view('planets.create');
     }
 
     /**
@@ -45,48 +45,48 @@ class PlanetsController extends Controller
 
         Planets::create($request->all());
 
-        return redirect()->route('Planets.index')->with('success','Planets created successfully.');
+        return redirect()->route('planets.index')->with('success','planets created successfully.');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Planets  $Planets
+     * @param  \App\Models\Planets  $planets
      * @return \Illuminate\Http\Response
      */
-    public function show(Planets $Planets)
+    public function show(Planets $planets)
     {
-      return view('Planetss.show',compact('Planets'));
+      return view('Planetss.show', compact('Planets'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Planets  $Planets
+     * @param  \App\Models\Planets  $planets
      * @return \Illuminate\Http\Response
      */
-    public function edit(Planets $Planets)
+    public function edit(Planets $planets)
     {
-        return view('Planets.edit',compact('Planets'));
+        return view('planets.edit',compact('planets'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Planets  $Planets
+     * @param  \App\Models\Planets  $planets
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Planets $Planets)
+    public function update(Request $request, Planets $planets)
     {
         $request->validate([
             'title' => 'required',
             'description' => 'required',
         ]);
 
-        $Planets->update($request->all());
+        $planets->update($request->all());
 
-        return redirect()->route('Planets.index')->with('success','Planets updated successfully');
+        return redirect()->route('planets.index')->with('success','planets updated successfully');
     }
 
     /**
@@ -95,12 +95,12 @@ class PlanetsController extends Controller
      * @param  \App\Models\Planets  $Planets
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Planets $Planets)
+    public function destroy(Planets $planets)
     {
-      $Planets->delete();
+      $planets->delete();
 
-       return redirect()->route('Planets.index')
-                       ->with('success','Planets deleted successfully');
+       return redirect()->route('planets.index')
+                       ->with('success','planets deleted successfully');
     }
 
 }

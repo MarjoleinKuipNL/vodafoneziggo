@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layouts.app')
 @section('content')
     <div class="row">
         <div class="col-lg-12 margin-tb">
@@ -6,7 +6,7 @@
                 Voeg nieuwe mensen toe:
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('')}}">
+                <a class="btn btn-primary" href="{{ route('people.index')}}">
                     terug naar index van mensen
                 </a>
 

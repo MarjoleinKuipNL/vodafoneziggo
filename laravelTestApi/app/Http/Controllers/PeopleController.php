@@ -16,7 +16,7 @@ class PeopleController extends Controller
     public function index()
     {
         $client =  new Client();
-        $result = $client->request('GET', 'https://swapi.dev/api/people');
+        $result = $client->request('GET', 'https://swapi.dev/api/people/');
         $result = $result->getBody();
         return $result;
     }

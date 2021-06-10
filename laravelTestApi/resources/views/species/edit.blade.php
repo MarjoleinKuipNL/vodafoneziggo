@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layouts.app')
 @section('content')
     <div class="row">
         <div class="col-lg-12 margin-tb">
@@ -21,7 +21,7 @@
             @endforeach
         </div>
     @endif
-    <form action="{{ route('planet.update') }}" method="POST">
+    <form action="{{ route('planets.update') }}" method="POST">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
