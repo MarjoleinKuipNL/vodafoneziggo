@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use GuzzleHttp\Client;
 use App\Models\Species;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,10 @@ class SpeciesController extends Controller
      */
     public function index()
     {
-        //
+        $client =  new Client();
+        $result = $client->request('GET', 'https://swapi.dev/api/species');
+        $result = $result->getBody();
+        return $result;
     }
 
     /**

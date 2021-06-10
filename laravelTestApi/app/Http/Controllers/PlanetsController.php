@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use GuzzleHttp\Client;
 use App\Models\Planets;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,10 @@ class PlanetsController extends Controller
      */
     public function index()
     {
-        //
+        $client =  new Client();
+        $result = $client->request('GET', 'https://swapi.dev/api/planets');
+        $result = $result->getBody();
+        return $result;
     }
 
     /**
