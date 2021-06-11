@@ -19,13 +19,14 @@ class CreateSpeciesTable extends Migration
             $table->integer('average_lifespan');
             $table->string('classification');
             $table->string('designation');
-            $table->json('eye_colors');
-            $table->json('hair_colors');
+            $table->json('eye_colors')->default(json_encode(['none documented yet']));
+            $table->json('hair_colors')->default(json_encode(['none documented yet']));;
             $table->integer('homeworld');
+
             $table->string('language');
             $table->string('name');
             $table->string('url');
-            $table->json('skin_colors');
+            $table->json('skin_colors')->default(json_encode(['none documented yet']));;
             $table->timestamps();
         });
     }

@@ -6,7 +6,7 @@
                 Voeg nieuwe mensen toe:
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('')}}">
+                <a class="btn btn-primary" href="{{ route('specy.index')}}">
                     terug naar index van mensen
                 </a>
 

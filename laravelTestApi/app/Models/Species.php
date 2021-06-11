@@ -33,12 +33,14 @@ class Species extends Model
         'edited',
         'designation',
         'classification',
-        'created',        'average_lifespan',
+        'created',
+        'average_lifespan',
         'average_height',
     ];
     protected $casts = [
         'eye_colors' => 'array',
         'hair_colors' => 'array',
+        'skin_colors' => 'array',
     ];
 
     public function people(){

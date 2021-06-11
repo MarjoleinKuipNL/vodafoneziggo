@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use GuzzleHttp\Client;
 use App\Models\People;
+use GuzzleHttp\Exception\RequestException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class PeopleController extends Controller
 {
@@ -15,10 +17,19 @@ class PeopleController extends Controller
      */
     public function index()
     {
-        $client =  new Client();
-        $result = $client->request('GET', 'https://swapi.dev/api/people/');
-        $result = $result->getBody();
-        return $result;
+        // $client =  new Client();
+        // try{
+        //     $result = $client->request('GET', 'https://swapi.dev/api/people/', [
+        //     'Content-Type'     => 'application/json',
+        //     'Accept'           => 'application/json']);
+        //     $result = $result->getBody();
+        //     $jsonData = $result->json();
+        //     return $result;
+        // } catch(RequestException $exception) {
+        //     dd($exception);
+        // }
+        $response = Http::get('https://swapi.dev/api/people/');
+        return $response->getBody()->getContents();
     }
 
     /**

@@ -54,9 +54,9 @@ class SpeciesController extends Controller
      * @param  \App\Models\Species  $Species
      * @return \Illuminate\Http\Response
      */
-    public function show(Species $Species)
+    public function show(Species $species)
     {
-      return view('species.show',compact('Species'));
+      return view('species.show',compact('species'));
     }
 
     /**
@@ -65,9 +65,9 @@ class SpeciesController extends Controller
      * @param  \App\Models\Species  $Species
      * @return \Illuminate\Http\Response
      */
-    public function edit(Species $Species)
+    public function edit(Species $species)
     {
-        return view('species.edit',compact('Species'));
+        return view('species.edit',compact('species'));
     }
 
     /**

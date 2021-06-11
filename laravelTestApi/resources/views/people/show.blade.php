@@ -5,7 +5,7 @@
             <div class="pull-left">
                 <h2>Edit people</h2>
             </div>
-            <a class="btn btn-primary" href="{{ route('')}}">
+            <a class="btn btn-primary" href="{{ route('people.index')}}">
                 terug naar index van mensen
             </a>
         </div>
@@ -18,8 +18,6 @@
         @endforeach
     </div>
     @endif
-
-    <form action="{{ route('people.update', $post->id)}}" method="POST">
         @csrf
 
         @method('PUT')
@@ -74,5 +72,4 @@
                 </div>
             </div>
         </div>
-    </form>
 @endsection

@@ -20,7 +20,7 @@ Route::get('/', function () {
 Route::resource('people', App\Http\Controllers\Web\PeoplesController::class);
 Route::resource('species', App\Http\Controllers\Web\SpeciesController::class);
 Route::resource('planets', App\Http\Controllers\Web\PlanetsController::class);
-// Route::get('peoples', 'App\Http\Controllers\Web\PeoplesController@index')->middleware('auth')->name('peoples');
+Route::get('peoples', [App\Http\Controllers\Web\PeoplesController::class, 'index'])->middleware('auth')->name('people.index');
 // Route::get('people/{id}', 'App\Http\Controllers\Web\PeoplesController@show')->middleware('auth')->name('people.show');
 // Route::get('people/create', 'App\Http\Controllers\Web\PeoplesController@create')->middleware('auth')->name('people.create');
 // Route::post('people', 'App\Http\Controllers\Web\PeoplesController@store')->middleware('auth')->name('people');

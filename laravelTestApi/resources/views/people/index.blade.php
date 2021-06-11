@@ -19,28 +19,32 @@
         </tr>
         @foreach($peoples as $people)
         <tr>
+            <td>
+                {{ $people['id'] }}
+            </td>
+            <td>
+                {{-- {{ $people->id  }} --}}
+                {{ $people['name'] }}
+            </td>
 
-            <td>
-                {{ $people->id  }}
-            </td>
-            <td>
+            {{-- <td>
                 {{ $people->name }}
+            </td> --}}
+             <td>
+                {{ $people['birth_year']  }}
             </td>
             <td>
-                {{ $people->birth_year  }}
-            </td>
-            <td>
-                <a class="btn btn-info" href="{{ route('people.show', $people->id)}}">
+                <a class="btn btn-info" href="{{ route('people.show', $people['id'])}}">
                     Show
                 </a>
             </td>
             <td>
-                <a class="btn btn-info" href="{{ route('people.edit', $people->id)}}">
+                <a class="btn btn-info" href="{{ route('people.edit', $people['id'])}}">
                     Edit
                 </a>
             </td>
             <td>
-                <form action="{{ route('people.destroy', $people->id) }}" method="POST">
+                <form action="{{ route('people.destroy', $people['id']) }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button type="submit " class="btn btn-danger">Delete</button>

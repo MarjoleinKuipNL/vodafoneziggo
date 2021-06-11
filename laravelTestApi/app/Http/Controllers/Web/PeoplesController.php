@@ -6,7 +6,7 @@ use App\Models\People;
 use GuzzleHttp\Client;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Http;
 class PeoplesController extends Controller
 {
         /**
@@ -16,13 +16,43 @@ class PeoplesController extends Controller
      */
     public function index()
     {
-        $client =  new Client();
-        $result = $client->request('GET', 'https://swapi.dev/api/people');
-        $peoples = $result->getBody();
+
+        // $client =  new \GuzzleHttp\Client();
+        // // $response = $client->request('GET', 'https://swapi.dev/api/people/');
+        // $request = $client->get('https://swapi.dev/api/people/');
+        // $peoples = $request->getBody();
         // return $result;
         // $peoples = People::all();
-        dd($result);
-        return view('people.index', compact('peoples'));
+        // if($response->getBody()){
+        //     $peoples = $response->getBody();
+        // }
+        $response = Http::get('https://swapi.dev/api/people/');
+        $response = $response->json();
+        $peoples =$response['results'];
+        foreach($peoples as $people){
+            //dd( $people['name']);
+            $personExist = People::where('name', $people['name'])->first();
+
+            if(!$personExist){
+                //dd("Hallo");
+                $person = new People();
+                $person->name = $people['name'];
+                $person->height = $people['height'];
+                $person->mass = $people['mass'];
+                $person->hair_color = $people['hair_color'];
+                $person->gender = $people['gender'];
+                $person->birth_year = $people['birth_year'];
+                $person->eye_color = $people['eye_color'];
+                $person->homeworld = $people['homeworld'];
+                $person->skin_color = $people['skin_color'];
+                $person->url = $people['url'];
+                $person->save();
+
+            }
+
+        }
+        $persons = People::orderBy('id')->get();
+        return view('people.index', ['peoples' => $persons]);
     }
 
     /**
@@ -44,8 +74,16 @@ class PeoplesController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required',
-            'description' => 'required',
+            'name' => 'required',
+            'hair_color' => 'required',
+            'homeworld' => 'required',
+            'mass' => 'required',
+            'gender' => 'required',
+            'birth_year' => 'required',
+            'eye_color' => 'required',
+            'skin_color' => 'required',
+            'url' => 'required',
+            'height' => 'required'
         ]);
 
         People::create($request->all());
@@ -59,8 +97,11 @@ class PeoplesController extends Controller
      * @param  \App\Models\People  $people
      * @return \Illuminate\Http\Response
      */
-    public function show(People $people)
+    public function show($id)
     {
+
+        $people = People::findOrFail($id);
+        //dd($people);
       return view('people.show',compact('people'));
     }
 
@@ -70,9 +111,10 @@ class PeoplesController extends Controller
      * @param  \App\Models\People  $people
      * @return \Illuminate\Http\Response
      */
-    public function edit(People $people)
+    public function edit($id)
     {
-        return view('people.edit',compact('People'));
+        $people = People::findOrFail($id);
+        return view('people.edit',compact('people'));
     }
 
     /**
@@ -84,14 +126,24 @@ class PeoplesController extends Controller
      */
     public function update(Request $request, People $people)
     {
+
         $request->validate([
-            'title' => 'required',
-            'description' => 'required',
+            'name' => 'required',
+            'hair_color' => 'required',
+            'homeworld' => 'required',
+            'mass' => 'required|integer',
+            'gender' => 'required',
+            'birth_year' => 'required',
+            'eye_color' => 'required',
+            'skin_color' => 'required',
+            'url' => 'required',
+            'height' => 'required|integer'
         ]);
+
 
         $people->update($request->all());
 
-        return redirect()->route('People.index')->with('success','People updated successfully');
+        return redirect()->route('people.index')->with('success','people updated successfully');
     }
 
     /**
@@ -104,8 +156,8 @@ class PeoplesController extends Controller
     {
       $people->delete();
 
-       return redirect()->route('People.index')
-                       ->with('success','People deleted successfully');
+       return redirect()->route('people.index')
+                       ->with('success','people deleted successfully');
     }
 
 }
