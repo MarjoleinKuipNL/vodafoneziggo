@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\People;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Http;
 class PeoplesController extends Controller
 {
      /**
@@ -36,7 +37,6 @@ class PeoplesController extends Controller
                 $person->skin_color = $people['skin_color'];
                 $person->url = $people['url'];
                 $person->save();
-
             }
 
         }

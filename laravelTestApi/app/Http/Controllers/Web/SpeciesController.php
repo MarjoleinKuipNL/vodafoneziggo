@@ -39,8 +39,7 @@ class SpeciesController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required',
-            'description' => 'required',
+
         ]);
 
         Species::create($request->all());
